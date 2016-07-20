@@ -12,6 +12,15 @@ public class User {
         return name;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
     public void setName(String name) {
         this.name = name;
     }
