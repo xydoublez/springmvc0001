@@ -1,9 +1,10 @@
 package com.springapp.interceptor;
 
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.NamedThreadLocal;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  *  性能计数拦截器.
  */
 public class PerfInfoHandlerInterceptor extends HandlerInterceptorAdapter {
-    private  static Logger logger = Logger.getLogger(PerfInfoHandlerInterceptor.class);
+    private  static Logger logger = LoggerFactory.getLogger(PerfInfoHandlerInterceptor.class);
     //为了多线程使用定义本地线程
     private NamedThreadLocal<Long> startTimeThreadLocal = new NamedThreadLocal<Long>("startTime");
     @Override
@@ -26,6 +27,6 @@ public class PerfInfoHandlerInterceptor extends HandlerInterceptorAdapter {
         long endTime = System.currentTimeMillis();
         long beginTime = startTimeThreadLocal.get();// 得到线程绑定数据
         long consumeTime = endTime-beginTime;
-        logger.info(request.getRequestURI()+"耗时："+consumeTime+"毫秒");
+        logger.info("url:{},耗时{}毫秒",request.getRequestURI(),consumeTime);
     }
 }

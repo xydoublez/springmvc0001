@@ -1,7 +1,8 @@
 package com.springapp.mvc;
 
 import com.springapp.model.User;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/test")
 public class Hello2Controller {
 
-    private static Logger logger = Logger.getLogger(Hello2Controller.class);
+    private static Logger logger = LoggerFactory.getLogger(Hello2Controller.class);
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public User GetMethod(){
