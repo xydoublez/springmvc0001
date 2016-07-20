@@ -47,5 +47,14 @@
             org.springframework.web.util.Log4jConfigListener
         </listener-class>
     </listener>
-
+    <!--start 添加druid监控-->
+    <servlet>
+        <servlet-name>DruidStatView</servlet-name>
+        <servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DruidStatView</servlet-name>
+        <url-pattern>/druid/*</url-pattern>
+    </servlet-mapping>
+    <!--end 添加druid监控-->
 </web-app>
