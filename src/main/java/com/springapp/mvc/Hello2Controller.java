@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/test")
 public class Hello2Controller {
 
-    @RequestMapping(method = RequestMethod.GET,produces = "application/json;charset=utf-8")
+    @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
     public User GetMethod(){
         User user = new User();
