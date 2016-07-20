@@ -26,7 +26,7 @@ public class Hello2Controller {
         user.setName("李志强");
         user.setSex("男");
         user.setAge(26);
-        logger.info("获取内容为"+user.toString());
+        logger.info("获取内容为{}",user.toString());
         return user;
 
     }
