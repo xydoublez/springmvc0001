@@ -82,4 +82,8 @@
         <!--  <property name="logAbandoned" value="${logAbandoned}" /> 关闭abanded连接时输出错误日志 -->
     </bean>
     <!--end 数据源配置-->
+    <mvc:resources mapping="/js/**" location="/js/"/>
+    <mvc:resources mapping="/images/**" location="/images/"/>
+
+
 </beans>

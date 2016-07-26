@@ -14,6 +14,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,15 +27,18 @@ public class druidTestController {
     private JdbcTemplate jdbcTemplate;
     @RequestMapping(method = RequestMethod.GET)
     @ResponseBody
-   public String Get(){
+   public List<Map<String,Object>> Get(){
         String result ="druid is very good";
+        List<Map<String,Object>> list =null;
         ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("mvc-dispatcher-servlet.xml");
         DataSource dataSource = (DataSource)context.getBean("dataSource");
 
         jdbcTemplate = new JdbcTemplate(dataSource);
-        Map<String,Object> map = jdbcTemplate.queryForMap("SELECT * FROM TEST WHERE ROWNUM<2");
-        logger.info("druid:{}",map.toString());
-        return result;
+        //Map<String,Object> map = jdbcTemplate.queryForMap("SELECT * FROM TEST WHERE ROWNUM<2");
+        list= jdbcTemplate.queryForList("SELECT * FROM view_reglist WHERE rownum<10");
+        logger.info("druid:{}", list.toString());
+        //return map;
+        return list;
    }
     private void test(){
         ClassPathXmlApplicationContext context =  new ClassPathXmlApplicationContext("mvc-dispatcher-servlet.xml");
